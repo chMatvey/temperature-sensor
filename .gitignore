@@ -1,0 +1,15 @@
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+#maven
+/target
+
+#intellij idea
+/.idea
+/temperature-sensor.iml
