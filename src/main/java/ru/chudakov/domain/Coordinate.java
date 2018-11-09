@@ -19,11 +19,11 @@ public class Coordinate {
 
     @NonNull
     @Column(unique = true)
-    private double longitude;
+    private double latitude;
 
     @NonNull
     @Column(unique = true)
-    private double latitude;
+    private double longitude;
 
     @NonNull
     @ManyToOne

@@ -13,3 +13,8 @@
 #intellij idea
 /.idea
 /temperature-sensor.iml
+
+#front
+/package-lock.json
+
+/node_modules

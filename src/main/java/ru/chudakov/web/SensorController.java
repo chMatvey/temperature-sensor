@@ -31,10 +31,10 @@ public class SensorController {
 
     @PostMapping("/send")
     public Temperature sendData(@RequestBody double degree,
-                                @RequestBody double longitude,
-                                @RequestBody double latitude){
+                                @RequestBody double latitude,
+                                @RequestBody double longitude){
         return temperatureService.saveTemperature(degree,
-                coordinateService.getCoordinateByLongAndLat(longitude, latitude)
-                        .orElse(new Coordinate(longitude, latitude, null)));
+                coordinateService.getCoordinateByLatitudeAndLongitude(latitude, longitude)
+                        .orElse(new Coordinate(latitude, longitude, null)));
     }
 }

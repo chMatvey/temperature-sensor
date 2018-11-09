@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface CoordinateService {
     public Coordinate saveCoordinate(double longitude, double latitude, City city);
 
-    public Optional<Coordinate> getCoordinateByLongAndLat(double longitude, double latitude);
+    public Optional<Coordinate> getCoordinateByLatitudeAndLongitude(double latitude, double longitude);
 }

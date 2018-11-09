@@ -18,12 +18,12 @@ public class CoordinateServiceImpl implements CoordinateService {
     }
 
     @Override
-    public Coordinate saveCoordinate(double longitude, double latitude, City city) {
-        return repository.save(new Coordinate(longitude, latitude, city));
+    public Coordinate saveCoordinate(double latitude, double longitude, City city) {
+        return repository.save(new Coordinate(latitude, longitude, city));
     }
 
     @Override
-    public Optional<Coordinate> getCoordinateByLongAndLat(double longitude, double latitude) {
+    public Optional<Coordinate> getCoordinateByLatitudeAndLongitude(double latitude, double longitude) {
         return repository.getByLatitudeAndLongitude(longitude, latitude);
     }
 }
