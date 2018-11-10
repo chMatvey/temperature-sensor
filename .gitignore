@@ -16,5 +16,5 @@
 
 #front
 /package-lock.json
-
 /node_modules
+/src/main/resources/static/build

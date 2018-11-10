@@ -6,7 +6,7 @@ import ru.chudakov.domain.Temperature;
 import java.util.List;
 
 public interface TemperatureService {
-    public Temperature saveTemperature(double degrees, Coordinate coordinate);
+    public Temperature saveTemperature(Temperature temperature);
 
     public List<Temperature> getLast();
 }

@@ -6,7 +6,7 @@ import ru.chudakov.domain.Coordinate;
 import java.util.Optional;
 
 public interface CoordinateService {
-    public Coordinate saveCoordinate(double longitude, double latitude, City city);
-
     public Optional<Coordinate> getCoordinateByLatitudeAndLongitude(double latitude, double longitude);
+
+    public int getCountCoordinateWithCity();
 }

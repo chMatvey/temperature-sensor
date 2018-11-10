@@ -7,6 +7,6 @@ import ru.chudakov.domain.Temperature;
 import java.util.List;
 
 public interface TemperatureRepository extends CrudRepository<Temperature, Integer> {
-    @Query(value = "SELECT * FROM temperature ORDER BY id LIMIT 10", nativeQuery = true)
-    List<Temperature> getLastLimit();
+    @Query(value = "SELECT * FROM temperature ORDER BY id DESC LIMIT 10", nativeQuery = true)
+    List<Temperature> getLast();
 }

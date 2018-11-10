@@ -18,12 +18,12 @@ public class TemperatureServiceImpl implements TemperatureService {
     }
 
     @Override
-    public Temperature saveTemperature(double degrees, Coordinate coordinate) {
-        return repository.save(new Temperature(degrees, coordinate));
+    public Temperature saveTemperature(Temperature temperature) {
+        return repository.save(temperature);
     }
 
     @Override
     public List<Temperature> getLast() {
-        return repository.getLastLimit();
+        return (List<Temperature>) repository.getLast();
     }
 }

@@ -1,9 +1,7 @@
 package ru.chudakov.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import ru.chudakov.domain.City;
 
 import javax.persistence.*;
@@ -12,27 +10,28 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
+@EqualsAndHashCode(exclude = {"latitude", "longitude", "city"})
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"latitude", "longitude"})
+})
 public class Coordinate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NonNull
-    @Column(unique = true)
     private double latitude;
 
     @NonNull
-    @Column(unique = true)
     private double longitude;
 
-    @NonNull
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "city_id", nullable = true)
     private City city;
 
-//    public Coordinate(double longitude, double latitude, City city){
-//        this.longitude = longitude;
-//        this.latitude = latitude;
-//        this.city = city;
-//    }
+    public Coordinate(double latitude, double longitude, City city){
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.city = city;
+    }
 }

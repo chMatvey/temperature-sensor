@@ -6,6 +6,7 @@ import ru.chudakov.domain.City;
 import ru.chudakov.domain.Coordinate;
 import ru.chudakov.repository.CoordinateRepository;
 
+import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 @Service
@@ -18,12 +19,12 @@ public class CoordinateServiceImpl implements CoordinateService {
     }
 
     @Override
-    public Coordinate saveCoordinate(double latitude, double longitude, City city) {
-        return repository.save(new Coordinate(latitude, longitude, city));
+    public Optional<Coordinate> getCoordinateByLatitudeAndLongitude(double latitude, double longitude) {
+        return repository.getByLatitudeAndLongitude(latitude, longitude);
     }
 
     @Override
-    public Optional<Coordinate> getCoordinateByLatitudeAndLongitude(double latitude, double longitude) {
-        return repository.getByLatitudeAndLongitude(longitude, latitude);
+    public int getCountCoordinateWithCity() {
+        return repository.countByCityNotNull();
     }
 }
