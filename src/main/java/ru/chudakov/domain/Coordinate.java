@@ -1,8 +1,6 @@
 package ru.chudakov.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import ru.chudakov.domain.City;
 
 import javax.persistence.*;
 
@@ -10,7 +8,6 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-@EqualsAndHashCode(exclude = {"latitude", "longitude", "city"})
 @Table(uniqueConstraints = {
         @UniqueConstraint(columnNames = {"latitude", "longitude"})
 })
@@ -26,7 +23,7 @@ public class Coordinate {
     private double longitude;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "city_id", nullable = true)
+    @JoinColumn(name = "city_id")
     private City city;
 
     public Coordinate(double latitude, double longitude, City city){

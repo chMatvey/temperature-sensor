@@ -1,6 +1,5 @@
 package ru.chudakov.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,7 +8,6 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-@EqualsAndHashCode(exclude = {"degrees", "coordinate"})
 public class Temperature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +18,6 @@ public class Temperature {
 
     @NonNull
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "coordinate_id", nullable = false, unique = false)
+    @JoinColumn(name = "coordinate_id", nullable = false)
     private Coordinate coordinate;
 }

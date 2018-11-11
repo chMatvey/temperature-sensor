@@ -2,7 +2,6 @@ package ru.chudakov.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.chudakov.domain.Coordinate;
 import ru.chudakov.domain.Temperature;
 import ru.chudakov.repository.TemperatureRepository;
 
@@ -24,6 +23,6 @@ public class TemperatureServiceImpl implements TemperatureService {
 
     @Override
     public List<Temperature> getLast() {
-        return (List<Temperature>) repository.getLast();
+        return repository.getLast();
     }
 }

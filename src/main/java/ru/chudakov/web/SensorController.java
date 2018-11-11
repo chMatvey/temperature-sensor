@@ -29,19 +29,21 @@ public class SensorController {
         return temperatureService.getLast();
     }
 
-    @PreAuthorize("hasAnyRole('SENSOR')")
+    @PreAuthorize("hasAuthority('ROLE_SENSOR')")
     @PostMapping("/send")
-    public Result sendData(@RequestBody Temperature temperature){
+    public Result sendData(@RequestBody Temperature temperature) {
         Result result;
         double degrees = temperature.getDegrees();
         double latitude = temperature.getCoordinate().getLatitude();
         double longitude = temperature.getCoordinate().getLongitude();
-        if (degrees > 60 || degrees < -100 || latitude < -90 || latitude > 90 || longitude < -180 || latitude > 180) {
+        if (degrees > 60 || degrees < -100 || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
             result = new Error("Data is incorrect!");
         } else {
-            result = new Success<Temperature>(temperatureService.saveTemperature(
-                    new Temperature(degrees, coordinateService.getCoordinateByLatitudeAndLongitude(latitude, longitude)
-                            .orElse(new Coordinate(latitude, longitude)))));
+            result = new Success<>(temperatureService.saveTemperature(
+                    new Temperature(degrees, coordinateService
+                            .getCoordinateByLatitudeAndLongitude(latitude, longitude)
+                            .orElse(new Coordinate(latitude, longitude)))
+            ));
         }
         return result;
     }

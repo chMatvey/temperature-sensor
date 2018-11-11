@@ -48,7 +48,7 @@ class User extends Component {
                         </tr>)}
                     </tbody>
                 </table><br/>
-                <Link to="/sensor">Sensor page</Link><br/>
+                <Link to="/sensor">Sensor page</Link><br/><br/>
                 <a href="/logout">Logout</a>
             </div>
         )
